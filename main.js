@@ -1,3 +1,14 @@
+const opening = document.getElementById('opening');
+const today = document.getElementById('today');
+const predict = document.getElementById('predictions');
+const suggest = document.getElementById('suggestions');
+const reveal = document.getElementById('reveal');
+const retry = document.getElementById('retry');
+
+today.style.display = 'none';
+predict.style.display = 'none';
+suggest.style.display = 'none';
+
 // create a new Date object
 const now = new Date();
 
@@ -16,11 +27,24 @@ const randomMessage = (arr) => {
     return arr[Math.floor(Math.random()*arr.length)];
 }
 
-const prediction = randomMessage(predictions);
-const suggestion = randomMessage(suggestions);
+function futureReveal() {
+  const prediction = randomMessage(predictions);
+  const suggestion = randomMessage(suggestions);
 
-console.log(`Today is ${dayOfWeek}.`);
+  reveal.style.display = 'none';
 
-console.log(`You will have ${prediction}.`);
+  opening.innerHTML = 'Here is your future:';
 
-console.log(`You should ${suggestion}.`);
+  today.style.display = 'block';
+  predict.style.display = 'block';
+  suggest.style.display = 'block';
+
+  today.innerHTML = `Today is ${dayOfWeek}.`;
+  predict.innerHTML = `You will have ${prediction}.`;
+  suggest.innerHTML = `You should ${suggestion}.`;
+
+  retry.style.display = 'block';
+}
+
+reveal.onclick = futureReveal;
+retry.onclick = futureReveal;
