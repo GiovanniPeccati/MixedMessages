@@ -4,7 +4,9 @@ const predict = document.getElementById('predictions');
 const suggest = document.getElementById('suggestions');
 const reveal = document.getElementById('reveal');
 const retry = document.getElementById('retry');
+const card = document.getElementById('card');
 
+card.style.display = 'none';
 today.style.display = 'none';
 predict.style.display = 'none';
 suggest.style.display = 'none';
@@ -54,6 +56,7 @@ function futureReveal() {
 
   opening.innerHTML = 'Here is your future:';
 
+  card.style.display = 'block';
   today.style.display = 'block';
   predict.style.display = 'block';
   suggest.style.display = 'block';
